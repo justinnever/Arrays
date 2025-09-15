@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>100 Java String Programming Questions</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f9; margin:0; padding:20px; }
+    h1 { text-align:center; color:#2563eb; }
+    .question-card {
+      background: #ffffff;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .toggle-btn {
+      background: #0ea5a4;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .toggle-btn:hover { background: #0c8c8a; }
+    .answer {
+      background: #d1fae5;
+      color: purple;
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 10px;
+      display:none;
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>100 Java String Programming Questions</h1>
+<div class="question-card">
+  <p><strong>1. Write a program to find the length of a string.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+    <pre>
+class StringLength {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        System.out.println("Length of string: " + str.length());
+    }
+}
+    </pre>
+  </div>
+</div>
+
+<div class="question-card">
+  <p><strong>2. Write a program to print each character of a string.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+    <pre>
+public class PrintCharacters {
+    public static void main(String[] args) {
+        String str = "Hello Java";
+        for (int i = 0; i < str.length(); i++) {
+            System.out.println(str.charAt(i));
+        }
+    }
+}
+    </pre>
+  </div>
+</div>
+
+<div class="question-card">
+  <p><strong>3. Write a program to reverse a string.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+    <pre>
+public class ReverseString {
+    public static void main(String[] args) {
+        String str = "Hello";
+        String reversed = new StringBuilder(str).reverse().toString();
+        System.out.println("Reversed: " + reversed);
+    }
+}
+    </pre>
+  </div>
+</div>
+
+<div class="question-card">
+  <p><strong>4. Write a program to check a string is palindrome .</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+class PalindromeCheck {
+    public static void main(String[] args) {
+        String str="Mal  ay=alam";
+        String s = "";
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32); // convert uppercase to lowercase
+            }
+            if ((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
+                s += ch; 
+            }
+        }
+
+        boolean isPalindrome = true;
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
+        }
+
+        if (isPalindrome) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="question-card">
+  <p><strong>5. Count the number of Vowels in a String.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+
+class VowelCount {
+    public static void main(String[] args) {
+        String str="maluyilom";
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+            }
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+
+        System.out.println("Number of vowels in "+str+" - " + count);
+       }
+}
+</pre>
+</div>
+</div>
+
+
+<div class="question-card">
+  <p><strong>6. Count the number of Consonants in a String.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+class ConsonantCount {
+    public static void main(String[] args) {
+        String str="abcdefghi";
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+            }
+            if (ch >= 'a' && ch <= 'z') {
+                if (!(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')) {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Number of consonants: " + count);
+    }
+}
+/*
+class ConsonantCount {
+    public static void main(String[] args) {
+        String str = "abcdefghi".toLowerCase();
+        int count = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z' && "aeiou".indexOf(ch) == -1) {
+                count++;
+            }
+        }
+
+        System.out.println("Number of consonants: " + count);
+    }
+}*/
+</pre>
+</div>
+</div>
+
+<div class="question-card">
+  <p><strong>7. Count the number of Digits in a String.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+class CountDigits {
+    public static void main(String[] args) {
+        String str = "Hello123World456";
+        int count = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                count++;
+            }
+        }
+        System.out.println("Digits: " + count);
+    }
+}
+</pre>
+</div>
+</div>
+<div class="question-card">
+  <p><strong>8. Count the number of Spaces in a String.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+
+class CountSpaces {
+    public static void main(String[] args) {
+        String str = "Hello World Java Program";
+        int count = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                count++;
+            }
+        }
+        System.out.println("Spaces: " + count);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="question-card">
+  <p><strong>9. Count the number of Special Characters in a String.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+class CountSpecialChars {
+    public static void main(String[] args) {
+        String str = "Hello@Java#2025!";
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (!(ch >= 'a' && ch <= 'z') && 
+                !(ch >= 'A' && ch <= 'Z') && 
+                !(ch >= '0' && ch <= '9') && 
+                ch != ' ') {
+                count++;
+            }
+        }
+        System.out.println("Special Characters: " + count);
+    }
+}
+</pre>
+</div>
+</div>
+<div class="question-card">
+  <p><strong>10. Convert the string into Upper Case.</strong></p>
+  <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer">
+<pre>
+
+public class ToUpperCase {
+    public static void main(String[] args) {
+        String str = "first hello world java";
+        String upper = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                upper += (char)(ch - 32); // convert to uppercase
+            } else {
+                upper += ch; // keep as it is
+            }
+        }
+        System.out.println("Uppercase: " + upper);
+        String str1 = "second hello world java";
+        String upper1=str1.toUpperCase();
+        System.out.println("Uppercase: " + upper1);
+        
+    }
+}
+</pre>
+</div>
+</div>
+
+  <script>
+    function toggleAnswer(button) {
+      const answerBox = button.nextElementSibling;
+      if (answerBox.style.display === "none") {
+        answerBox.style.display = "block";
+        button.textContent = "Hide Answer";
+      } else {
+        answerBox.style.display = "none";
+        button.textContent = "Show Answer";
+      }
+    }
+  </script>
